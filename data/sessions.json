@@ -1,0 +1,22 @@
+[
+  {
+    "date": "2026-12-05",
+    "time": "9:30am - 11:00am",
+    "venue": "Merrylands Community Centre",
+    "address": "Merrylands NSW",
+    "ages": "1 - 5 years",
+    "price": "$15 per child",
+    "status": "confirmed",
+    "bookingLink": ""
+  },
+  {
+    "date": "2026-12-12",
+    "time": "9:30am - 11:00am",
+    "venue": "Venue to be confirmed",
+    "address": "Western Sydney",
+    "ages": "1 - 5 years",
+    "price": "$15 per child",
+    "status": "potential",
+    "bookingLink": ""
+  }
+]

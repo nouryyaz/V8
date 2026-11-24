@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Rainbow Rice Sensory Kit",
+    "description": "Coloured rice, scoops, and bowls for hands-on pouring and exploring.",
+    "price": "$29.00",
+    "image": "images/rainbow-rice-hands.jpg",
+    "stripeLink": "https://buy.stripe.com/replace-me",
+    "inStock": true
+  },
+  {
+    "name": "Pom-Pom Play Kit",
+    "description": "Soft pom-poms in pinks, purples and blues, with cups for sorting and scooping.",
+    "price": "$22.00",
+    "image": "images/pompoms-hands.jpg",
+    "stripeLink": "https://buy.stripe.com/replace-me",
+    "inStock": true
+  },
+  {
+    "name": "Sand and Scoop Kit",
+    "description": "Play sand with scoops and moulds for pressing, pouring and building.",
+    "price": "$26.00",
+    "image": "images/sand-play-hands.jpg",
+    "stripeLink": "https://buy.stripe.com/replace-me",
+    "inStock": true
+  }
+]

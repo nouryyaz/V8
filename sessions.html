@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a Session - Mateology Play Society</title>
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="apple-touch-icon" href="images/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fun.css">
+  <link rel="stylesheet" href="story.css">
+  <link rel="stylesheet" href="glass.css">
+</head>
+<body>
+  <header>
+    <h1><a class="brand" href="index.html" aria-label="Mateology Play Society, home"><img src="images/logo.png" alt="Mateology Play Society"></a></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="sessions.html" class="active">Sessions</a>
+      <a href="shop.html">Play Kits</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Book a session</h2>
+    <p>Pick a green day on the calendar to see where we'll be and book your spot. Yellow days are pencilled in, with the venue still being confirmed.</p>
+
+    <p id="demo-note" class="note" hidden>Online booking opens soon. For now, here is a preview of upcoming sessions.</p>
+
+    <section class="booking-calendar" aria-label="Session calendar">
+      <div class="cal-head">
+        <button type="button" id="cal-prev" class="cal-nav" aria-label="Previous month">&#8249;</button>
+        <h3 id="cal-title" aria-live="polite"></h3>
+        <button type="button" id="cal-next" class="cal-nav" aria-label="Next month">&#8250;</button>
+      </div>
+      <div id="cal-grid" class="cal-grid"></div>
+      <div class="cal-legend">
+        <span><span class="dot dot-confirmed"></span>Open for booking</span>
+        <span><span class="dot dot-potential"></span>Pencilled in</span>
+        <span><span class="dot dot-full"></span>Fully booked</span>
+      </div>
+    </section>
+
+    <div class="list-head">
+      <h3 id="list-title">Upcoming sessions</h3>
+      <button type="button" id="show-all" class="link-btn" hidden>Show all sessions</button>
+    </div>
+    <p id="status" class="muted" aria-live="polite"></p>
+    <div id="sessions" class="grid"></div>
+  </main>
+
+  <dialog id="book-dialog" class="book-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button type="button" class="dialog-x" data-close aria-label="Close">&times;</button>
+
+      <div id="form-view">
+        <h3 id="dialog-title">Book your spot</h3>
+        <p id="dialog-summary" class="dialog-summary"></p>
+        <form id="book-form" novalidate>
+          <label class="field">Your name
+            <input name="parentName" type="text" autocomplete="name" maxlength="80" required>
+          </label>
+          <label class="field">Email
+            <input name="email" type="email" autocomplete="email" maxlength="120" required>
+          </label>
+          <label class="field">Phone
+            <input name="phone" type="tel" autocomplete="tel" maxlength="20" required>
+          </label>
+          <label class="field">How many children?
+            <select name="children" id="children-select"></select>
+          </label>
+          <label class="field">Children's first names and ages (optional)
+            <input name="childDetails" type="text" maxlength="300" placeholder="e.g. Mia 3, Leo 1">
+          </label>
+          <label class="field">Allergies or anything we should know (optional)
+            <textarea name="notes" rows="2" maxlength="500"></textarea>
+          </label>
+          <div class="hp" aria-hidden="true">
+            <label>Leave this empty <input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <label class="check">
+            <input name="consent" type="checkbox" required>
+            <span>I agree that Mateology Play Society can use these details to manage my booking and contact me about it.</span>
+          </label>
+          <p id="form-error" class="form-error" role="alert"></p>
+          <div class="dialog-actions">
+            <button type="submit" id="submit-btn" class="btn">Confirm booking</button>
+            <button type="button" class="link-btn" data-close>Cancel</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="done-view" hidden>
+        <h3>You're booked in!</h3>
+        <div id="done-body"></div>
+        <div class="dialog-actions" id="done-actions"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer>
+    <a class="brand brand-foot" href="index.html" aria-label="Mateology Play Society, home"><img src="images/logo.png" alt="Mateology Play Society"></a>
+    <p>Mateology Play Society &middot; Sensory play for little hands</p>
+  </footer>
+  <script src="config.js"></script>
+  <script src="booking.js"></script>
+  <script src="motion.js"></script>
+  <script src="story.js"></script>
+</body>
+</html>

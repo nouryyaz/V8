@@ -1,0 +1,251 @@
+/* Fun layer: floating balloons and clouds, 3D alphabet blocks, pop-out hover.
+   Loaded after style.css. Pair with motion.js. Everything is drawn in code. */
+
+/* ---------- Sky: balloons and clouds (added by motion.js) ---------- */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+main, footer { position: relative; z-index: 1; }
+
+.cloud {
+  position: absolute;
+  left: -300px;
+  top: var(--top, 20%);
+  width: 190px;
+  height: 58px;
+  border-radius: 999px;
+  background: #d9f2fb;
+  box-shadow: inset 0 -8px 0 rgba(76, 201, 240, 0.22);
+  scale: var(--s, 1);
+  animation: drift var(--dur, 80s) linear var(--delay, 0s) infinite;
+}
+
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  box-shadow: inherit;
+  border-radius: 50%;
+}
+
+.cloud::before { width: 84px; height: 84px; top: -40px; left: 30px; }
+.cloud::after { width: 64px; height: 64px; top: -28px; left: 98px; }
+
+@keyframes drift {
+  from { translate: 0 0; }
+  to { translate: calc(100vw + 600px) 0; }
+}
+
+.balloon {
+  position: absolute;
+  left: var(--x, 10%);
+  bottom: -220px;
+  width: var(--w, 52px);
+  height: calc(var(--w, 52px) * 1.24);
+  border-radius: 50% 50% 46% 46% / 56% 56% 44% 44%;
+  opacity: 0.78;
+  background:
+    radial-gradient(ellipse 20% 13% at 33% 24%, rgba(255, 255, 255, 0.9), transparent 70%),
+    radial-gradient(circle at 38% 32%, color-mix(in srgb, var(--c) 62%, white) 0, var(--c) 52%, color-mix(in srgb, var(--c) 76%, black) 100%);
+  animation:
+    rise var(--dur, 28s) linear var(--delay, 0s) infinite,
+    tilt 5s ease-in-out infinite alternate;
+}
+
+/* knot */
+.balloon::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 9px solid var(--c);
+  filter: brightness(0.82);
+}
+
+/* string */
+.balloon::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 96px;
+  margin-left: -1px;
+  background: rgba(61, 44, 94, 0.5);
+  transform-origin: top center;
+  animation: sway 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes rise {
+  0%   { translate: 0 0; }
+  25%  { translate: 22px calc(-0.28 * (100vh + 320px)); }
+  50%  { translate: -16px calc(-0.55 * (100vh + 320px)); }
+  75%  { translate: 20px calc(-0.8 * (100vh + 320px)); }
+  100% { translate: 0 calc(-100vh - 320px); }
+}
+
+@keyframes tilt {
+  from { rotate: -5deg; }
+  to { rotate: 5deg; }
+}
+
+@keyframes sway {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
+}
+
+/* ---------- Hero: 3D alphabet blocks and entrance ---------- */
+.hero-art { position: relative; }
+
+.cube {
+  --s: 64px;
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  perspective: 520px;
+  z-index: 3;
+  animation: bob 5s ease-in-out infinite alternate;
+}
+
+.cube-in {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: tumble var(--spin, 16s) linear infinite;
+}
+
+.cube .face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: 'Baloo 2', 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  font-size: calc(var(--s) * 0.58);
+  color: white;
+  background: var(--c);
+  border: 3px solid rgba(255, 255, 255, 0.55);
+  border-radius: 12px;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.18);
+}
+
+.cube .front  { transform: translateZ(calc(var(--s) / 2)); }
+.cube .back   { transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.82); }
+.cube .right  { transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.9); }
+.cube .left   { transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.75); }
+.cube .top    { transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); filter: brightness(1.12); }
+.cube .bottom { transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); filter: brightness(0.7); }
+
+.cube.c1 { --s: 72px; --spin: 18s; top: -28px; left: -26px; }
+.cube.c2 { --s: 54px; --spin: 14s; top: 8%; right: -20px; animation-delay: -1.5s; }
+.cube.c3 { --s: 66px; --spin: 20s; bottom: -22px; right: 12%; animation-delay: -3s; }
+.cube.c4 { --s: 56px; --spin: 16s; bottom: 12%; left: -30px; animation-delay: -2s; }
+
+@keyframes bob {
+  from { translate: 0 -7px; }
+  to { translate: 0 9px; }
+}
+
+@keyframes tumble {
+  0%   { transform: rotateX(-24deg) rotateY(0deg) rotateZ(0deg); }
+  50%  { transform: rotateX(24deg) rotateY(180deg) rotateZ(8deg); }
+  100% { transform: rotateX(-24deg) rotateY(360deg) rotateZ(0deg); }
+}
+
+.hero-text > * { animation: pop-in 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+.hero-text > :nth-child(2) { animation-delay: 0.1s; }
+.hero-text > :nth-child(3) { animation-delay: 0.2s; }
+.hero-art { animation: pop-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both; }
+
+@keyframes pop-in {
+  from { opacity: 0; translate: 0 26px; scale: 0.88; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+/* paint splashes breathe */
+.hero::before, .hero::after, .splash { animation: blob 11s ease-in-out infinite alternate; }
+.hero::after { animation-duration: 14s; animation-delay: -4s; }
+.splash.s2 { animation-delay: -3s; }
+.splash.s3 { animation-delay: -6s; }
+
+@keyframes blob {
+  0%   { border-radius: 58% 42% 63% 37% / 45% 55% 45% 55%; }
+  100% { border-radius: 40% 60% 36% 64% / 58% 42% 60% 40%; }
+}
+
+/* ---------- Pop-out hover and 3D tilt (motion.js sets --pop, --rx, --ry, --rz) ---------- */
+.card, .btn, .blob-photo, .photo-pair img, .cta-band img, button.cal-day {
+  transform:
+    perspective(900px)
+    translateY(var(--ty, 0px))
+    rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg))
+    rotate(calc(var(--base, 0deg) + var(--rz, 0deg)))
+    scale(calc(1 + var(--pop, 0) * var(--grow, 0.07)));
+  transition: transform 0.14s ease-out, box-shadow 0.2s;
+}
+
+.btn { --grow: 0.1; }
+button.cal-day { --grow: 0.14; }
+.card { transform-style: preserve-3d; position: relative; }
+.btn, .blob-photo, .photo-pair img, .cta-band img, button.cal-day { position: relative; }
+
+/* inside a card, the photo and title float forward as you get close */
+.card img, .card h3, .card .price, .card .tag {
+  transform: translateZ(calc(var(--pop, 0) * 34px));
+}
+
+.near { z-index: 30; }
+.near.card, .near.btn, .near.blob-photo, .near img, .near.cal-day {
+  box-shadow: 0 18px 28px rgba(61, 44, 94, 0.22);
+}
+.near.btn { box-shadow: 0 10px 0 #c93a7c, 0 18px 24px rgba(61, 44, 94, 0.25); }
+.near.btn-sun { box-shadow: 0 10px 0 #d9ad00, 0 18px 24px rgba(61, 44, 94, 0.25); }
+
+/* a quick random wiggle, picked by motion.js */
+.wiggle { animation: wiggle 0.9s ease-in-out; }
+
+@keyframes wiggle {
+  0%, 100% { rotate: 0deg; }
+  15% { rotate: -6deg; }
+  35% { rotate: 5deg; }
+  55% { rotate: -4deg; }
+  75% { rotate: 2deg; }
+}
+
+/* ---------- Scroll pop-in (only when motion.js is running) ---------- */
+.js .reveal:not(.in) { translate: 0 30px; scale: 0.93; }
+.js .reveal.in {
+  transition: translate 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), scale 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+  .cube.c1 { --s: 52px; top: -14px; left: -6px; }
+  .cube.c2 { --s: 40px; right: -4px; }
+  .cube.c3 { --s: 48px; bottom: -14px; right: 8%; }
+  .cube.c4 { --s: 40px; left: -8px; }
+  .balloon { opacity: 0.65; }
+}
+
+/* ---------- Respect "reduce motion" ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cloud, .balloon, .balloon::after, .cube, .cube-in, .splash, .hero::before, .hero::after,
+  .hero-text > *, .hero-art, .wiggle {
+    animation: none !important;
+  }
+  .balloon { bottom: auto; top: var(--rest, 30%); }
+  .cloud { left: var(--cx, 20%); }
+  .cube-in { transform: rotateX(-22deg) rotateY(32deg); }
+  .js .reveal:not(.in) { translate: none; scale: none; }
+}

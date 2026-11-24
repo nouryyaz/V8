@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mateology Play Society | Sensory Play Sessions for Kids</title>
+  <meta name="description" content="Mateology Play Society runs weekly sensory play sessions for kids at community centres, plus take-home play kits.">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="apple-touch-icon" href="images/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fun.css">
+  <link rel="stylesheet" href="story.css">
+  <link rel="stylesheet" href="glass.css">
+</head>
+<body class="story">
+  <header>
+    <h1><a class="brand" href="index.html" aria-label="Mateology Play Society, home"><img src="images/logo.png" alt="Mateology Play Society"></a></h1>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="sessions.html">Sessions</a>
+      <a href="shop.html">Play Kits</a>
+    </nav>
+  </header>
+
+  <!-- Opening -->
+  <section class="s-hero">
+    <span class="splash s1"></span>
+    <span class="splash s2"></span>
+    <span class="splash s3"></span>
+    <div class="s-hero-grid">
+      <div class="s-hero-text">
+        <p class="eyebrow">Sensory play sessions for kids</p>
+        <h2 class="mega" aria-label="Messy. Wonderful. Play.">
+          <span class="w" style="--d:0" aria-hidden="true">Messy.</span>
+          <span class="w w2" style="--d:1" aria-hidden="true">Wonderful.</span>
+          <span class="w w3" style="--d:2" aria-hidden="true">Play.</span>
+        </h2>
+        <p class="lead">Weekly sessions at community centres, plus take-home play kits. Little hands, big discoveries.</p>
+        <div class="hero-actions">
+          <a class="btn" href="sessions.html">Book a session</a>
+          <a class="btn btn-sun" href="shop.html">Shop play kits</a>
+        </div>
+      </div>
+      <div class="par" data-speed="-0.07">
+        <div class="hero-art">
+          <img class="blob-photo" src="images/rainbow-rice-hands.jpg" alt="A child's hands holding handfuls of rainbow-coloured rice">
+          <div class="cube c1" data-letter="P" data-color="pink"></div>
+          <div class="cube c2" data-letter="L" data-color="sun"></div>
+          <div class="cube c3" data-letter="A" data-color="sky"></div>
+          <div class="cube c4" data-letter="Y" data-color="lime"></div>
+        </div>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#dive"><span class="bub"></span>Scroll to dive in</a>
+  </section>
+
+  <!-- Chapter one: pinned, changes as you scroll -->
+  <section class="s-dive sheet" id="dive" data-step="0">
+    <div class="dive-sticky">
+      <div class="dive-text">
+        <p class="eyebrow">Chapter one &middot; Dive in</p>
+        <div class="dive-steps">
+          <article class="step on">
+            <h3>Touch.</h3>
+            <p>Sand, rice, water beads and more. Little hands squish, sift and discover what the world feels like.</p>
+          </article>
+          <article class="step">
+            <h3>Pour.</h3>
+            <p>Cups, spoons and scoops turn messy play into a pretend kitchen, one splash at a time.</p>
+          </article>
+          <article class="step">
+            <h3>Squish.</h3>
+            <p>Bumpy, smooth, squishy and soft. Every new texture is a tiny adventure.</p>
+          </article>
+        </div>
+        <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      </div>
+      <div class="dive-art">
+        <div class="orb">
+          <img class="on" src="images/sand-play-hands.jpg" alt="Small hands pressing wet sand into a pink scoop">
+          <img src="images/tea-set-mud-play.jpg" alt="A colourful toy tea set filled with messy mud play">
+          <img src="images/teal-toy-touch.jpg" alt="A toddler's hand pressing the textured buttons on a colourful toy">
+        </div>
+        <span class="ring r1"></span><span class="ring r2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Words that slide as you scroll -->
+  <section class="s-marquee" aria-hidden="true">
+    <div class="row" data-dir="1"><span>Squish</span><span class="o">Pour</span><span>Scoop</span><span class="o">Sprinkle</span><span>Stir</span><span class="o">Squash</span><span>Squish</span><span class="o">Pour</span><span>Scoop</span><span class="o">Sprinkle</span><span>Stir</span><span class="o">Squash</span></div>
+    <div class="row" data-dir="-1"><span class="o">Giggle</span><span>Sift</span><span class="o">Mix</span><span>Splash</span><span class="o">Explore</span><span>Wonder</span><span class="o">Giggle</span><span>Sift</span><span class="o">Mix</span><span>Splash</span><span class="o">Explore</span><span>Wonder</span></div>
+  </section>
+
+  <!-- Chapter two: a trail that draws itself -->
+  <section class="s-path">
+    <span class="par float-photo fp1" data-speed="0.12"><img src="images/bead-threading.jpg" alt="A child's hands threading colourful beads onto a string"></span>
+    <span class="par float-photo fp2" data-speed="-0.1"><img src="images/pebble-wall-touch.jpg" alt="A baby's hands exploring a wall of smooth pebbles"></span>
+    <div class="path-head">
+      <p class="eyebrow dark">Chapter two &middot; Find us</p>
+      <h2 class="reveal-me">A new place every week</h2>
+      <p class="reveal-me">We pop up at a different community centre each week. Follow the trail, then pick a day on the calendar.</p>
+    </div>
+    <div class="path-box" id="path-box">
+      <svg viewBox="0 0 400 1000" preserveAspectRatio="none" aria-hidden="true">
+        <path class="trail-bg" d="M200 0 C 290 110, 110 210, 200 330 S 290 520, 200 650 S 110 850, 200 1000" pathLength="1"/>
+        <path class="trail" id="trail" d="M200 0 C 290 110, 110 210, 200 330 S 290 520, 200 650 S 110 850, 200 1000" pathLength="1"/>
+      </svg>
+      <span class="runner" aria-hidden="true"></span>
+      <div class="pin left" data-at="0.13"><b>1</b><div class="pin-label"><h3>Community halls</h3><p>Big open floors with plenty of room to spread out and get messy.</p></div></div>
+      <div class="pin right" data-at="0.4"><b>2</b><div class="pin-label"><h3>Local centres</h3><p>Friendly spaces close to home, with something new on the mats every week.</p></div></div>
+      <div class="pin left" data-at="0.66"><b>3</b><div class="pin-label"><h3>Library rooms</h3><p>Quiet corners turned into colourful sensory worlds.</p></div></div>
+      <div class="pin right" data-at="0.92"><b>&#9733;</b><div class="pin-label"><h3>Next stop: you</h3><p>See where we'll be next and save your little one a spot.</p></div></div>
+    </div>
+    <div class="path-cta"><a class="btn" href="sessions.html">See the calendar</a></div>
+  </section>
+
+  <!-- Chapter three: scroll down, the kits slide sideways -->
+  <section class="s-kits sheet" id="kits">
+    <div class="kits-sticky">
+      <div class="kits-track" id="kits-track">
+        <div class="kit-intro">
+          <p class="eyebrow dark">Chapter three &middot; Take it home</p>
+          <h2>Take the play home</h2>
+          <p>The same kits we use in our sessions, ready for your kitchen table. Payments are handled securely by Stripe.</p>
+          <span class="swipe">Keep scrolling &rarr;</span>
+        </div>
+        <div class="kit-end">
+          <h3>Every kit, ready to play</h3>
+          <a class="btn" href="shop.html">See all play kits</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finale -->
+  <section class="s-finale sheet">
+    <span class="fbub" style="--l:6%;--s:34px;--d:9s;--o:-1s"></span>
+    <span class="fbub" style="--l:18%;--s:20px;--d:12s;--o:-5s"></span>
+    <span class="fbub" style="--l:33%;--s:46px;--d:10s;--o:-3s"></span>
+    <span class="fbub" style="--l:52%;--s:26px;--d:13s;--o:-8s"></span>
+    <span class="fbub" style="--l:68%;--s:40px;--d:9.5s;--o:-6s"></span>
+    <span class="fbub" style="--l:82%;--s:22px;--d:11s;--o:-2s"></span>
+    <span class="fbub" style="--l:93%;--s:36px;--d:12.5s;--o:-9s"></span>
+    <a class="finale-logo" href="index.html" aria-label="Mateology Play Society"><img src="images/logo.png" alt="Mateology Play Society"></a>
+    <h2 class="mega" aria-label="Ready to get messy?"><span class="w" aria-hidden="true">Ready</span> <span class="w w2" aria-hidden="true">to</span> <span class="w w3" aria-hidden="true">get</span> <span class="w" aria-hidden="true">messy?</span></h2>
+    <p class="lead">Pick a day, bring the little ones, and leave the mess to us.</p>
+    <div class="hero-actions">
+      <a class="btn btn-sun" href="sessions.html">Book a session</a>
+      <a class="btn" href="shop.html">Shop play kits</a>
+    </div>
+  </section>
+
+  <footer>
+    <a class="brand brand-foot" href="index.html" aria-label="Mateology Play Society, home"><img src="images/logo.png" alt="Mateology Play Society"></a>
+    <p>Mateology Play Society &middot; Sensory play for little hands</p>
+  </footer>
+  <script src="motion.js"></script>
+  <script src="story.js"></script>
+</body>
+</html>

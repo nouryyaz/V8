@@ -1,0 +1,230 @@
+/* Glass layer: frosted, see-through surfaces over soft colour glows.
+   Loaded last on every page. Delete the link to go back to the solid look. */
+
+:root {
+  --glass: rgba(255, 255, 255, 0.42);
+  --glass-strong: rgba(255, 255, 255, 0.62);
+  --glass-edge: rgba(255, 255, 255, 0.7);
+  --glass-blur: blur(18px) saturate(1.7);
+  --glass-shadow: 0 10px 34px rgba(61, 44, 94, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Soft colour glows behind everything, so the glass has something to frost */
+body {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 8% 12%, rgba(255, 95, 162, 0.30), transparent 38%),
+    radial-gradient(circle at 92% 20%, rgba(76, 201, 240, 0.34), transparent 40%),
+    radial-gradient(circle at 18% 88%, rgba(255, 217, 61, 0.38), transparent 40%),
+    radial-gradient(circle at 86% 82%, rgba(155, 93, 229, 0.26), transparent 42%);
+  background-attachment: fixed;
+}
+
+/* ---------- Shared glass surfaces ---------- */
+.card, .booking-calendar, .note, .pin-label, .kit.card, .dive-text, dialog.book-dialog .dialog-inner {
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.card, .booking-calendar {
+  --tint: var(--teal);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--tint) 22%, rgba(255, 255, 255, 0.55)), rgba(255, 255, 255, 0.28));
+  border: 1.5px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+}
+.card:nth-child(4n+2) { --tint: var(--pink); border-color: var(--glass-edge); }
+.card:nth-child(4n+3) { --tint: var(--orange); border-color: var(--glass-edge); }
+.card:nth-child(4n+4) { --tint: var(--purple); border-color: var(--glass-edge); }
+.card.c-sky { --tint: var(--sky); border-color: var(--glass-edge); }
+.card.c-sun { --tint: var(--sun); border-color: var(--glass-edge); }
+.card.c-teal { --tint: var(--teal); border-color: var(--glass-edge); }
+.card.c-pink { --tint: var(--pink); border-color: var(--glass-edge); }
+.card.c-purple { --tint: var(--purple); border-color: var(--glass-edge); }
+.card.c-orange { --tint: var(--orange); border-color: var(--glass-edge); }
+.card.potential { --tint: var(--sun); border: 1.5px dashed rgba(217, 173, 0, 0.75); }
+.booking-calendar { --tint: var(--purple); border-radius: 32px; }
+
+.card .photo, .card > img, .card img { border: 3px solid rgba(255, 255, 255, 0.85); box-shadow: 0 6px 18px rgba(61, 44, 94, 0.18); }
+.near.card, .near.btn, .near.blob-photo, .near img, .near.cal-day { box-shadow: 0 24px 44px rgba(61, 44, 94, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9); }
+
+/* ---------- Buttons: glossy glass candy ---------- */
+.btn {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 55%), rgba(255, 95, 162, 0.92);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 24px rgba(255, 95, 162, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.btn:hover { box-shadow: 0 6px 16px rgba(255, 95, 162, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+.btn:active { box-shadow: 0 2px 6px rgba(255, 95, 162, 0.4), inset 0 2px 6px rgba(61, 44, 94, 0.2); }
+.btn-sun {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 55%), rgba(255, 217, 61, 0.94);
+  box-shadow: 0 10px 24px rgba(255, 184, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+.btn-sun:hover { box-shadow: 0 6px 16px rgba(255, 184, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9); }
+.btn-sun:active { box-shadow: 0 2px 6px rgba(255, 184, 0, 0.45), inset 0 2px 6px rgba(61, 44, 94, 0.2); }
+.near.btn { box-shadow: 0 16px 30px rgba(255, 95, 162, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+.near.btn-sun { box-shadow: 0 16px 30px rgba(255, 184, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.9); }
+
+/* ---------- Menu and footer ---------- */
+header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.04)), rgba(155, 93, 229, 0.58);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  backdrop-filter: blur(20px) saturate(1.8);
+  box-shadow: 0 12px 34px rgba(61, 44, 94, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+nav a:hover { background: rgba(255, 95, 162, 0.75); }
+nav a.active { background: rgba(255, 159, 28, 0.88); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 12px rgba(255, 159, 28, 0.4); }
+
+footer, .story footer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent), rgba(61, 44, 94, 0.82);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Booking calendar ---------- */
+.cal-nav {
+  background: rgba(76, 201, 240, 0.55);
+  border: 1.5px solid var(--glass-edge);
+  box-shadow: 0 6px 14px rgba(76, 201, 240, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.cal-nav:hover:not(:disabled) { background: rgba(255, 95, 162, 0.7); box-shadow: 0 6px 14px rgba(255, 95, 162, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+.cal-nav:disabled { background: rgba(255, 255, 255, 0.35); box-shadow: none; }
+.cal-day {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.cal-day.blank { background: none; border-color: transparent; box-shadow: none; }
+.cal-day.is-today { border-color: var(--pink); }
+button.cal-day.has-potential { background: rgba(255, 217, 61, 0.72); }
+button.cal-day.has-confirmed { background: rgba(126, 217, 87, 0.72); }
+button.cal-day.has-full { background: rgba(255, 95, 162, 0.78); color: white; }
+button.cal-day.is-selected { border-color: var(--ink); box-shadow: 0 10px 22px rgba(61, 44, 94, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+.tag { background: rgba(126, 217, 87, 0.7); border: 1px solid rgba(255, 255, 255, 0.7); }
+.tag.potential { background: rgba(255, 217, 61, 0.78); }
+.tag.full { background: rgba(255, 95, 162, 0.8); }
+.note { background: rgba(255, 217, 61, 0.35); border: 1.5px solid var(--glass-edge); box-shadow: var(--glass-shadow); }
+
+/* ---------- Booking pop-up ---------- */
+dialog.book-dialog {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+dialog.book-dialog .dialog-inner {
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.82), rgba(255, 248, 238, 0.6));
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 32px;
+  box-shadow: 0 30px 70px rgba(61, 44, 94, 0.35), inset 0 1px 0 #fff;
+  -webkit-backdrop-filter: blur(28px) saturate(1.8);
+  backdrop-filter: blur(28px) saturate(1.8);
+}
+dialog.book-dialog::backdrop {
+  background: radial-gradient(circle at 30% 20%, rgba(255, 95, 162, 0.35), transparent 50%), radial-gradient(circle at 75% 80%, rgba(76, 201, 240, 0.4), transparent 50%), rgba(61, 44, 94, 0.45);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.field input, .field select, .field textarea {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 2px 6px rgba(61, 44, 94, 0.08);
+}
+.dialog-x { background: rgba(255, 217, 61, 0.8); border: 1.5px solid rgba(255, 255, 255, 0.8); }
+
+/* ---------- Photos ---------- */
+.blob-photo, .photo-pair img, .cta-band img { border-color: rgba(255, 255, 255, 0.75); box-shadow: 0 16px 40px rgba(61, 44, 94, 0.25); }
+.cta-band { background: linear-gradient(135deg, rgba(155, 93, 229, 0.7), rgba(255, 95, 162, 0.6)); border: 1.5px solid var(--glass-edge); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); box-shadow: var(--glass-shadow); }
+
+/* ---------- Story page ---------- */
+.eyebrow { background: rgba(255, 255, 255, 0.26); border: 1px solid rgba(255, 255, 255, 0.6); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.eyebrow.dark { background: rgba(255, 95, 162, 0.78); }
+
+.s-hero { background: radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.35), transparent 40%), linear-gradient(150deg, rgba(76, 201, 240, 1), rgba(46, 196, 182, 1)); }
+.s-hero::before, .s-hero::after { opacity: 0.75; }
+
+.s-dive { background-image: radial-gradient(circle at 15% 85%, rgba(255, 255, 255, 0.28), transparent 45%), radial-gradient(circle at 90% 10%, rgba(155, 93, 229, 0.35), transparent 45%); background-color: var(--sky); }
+.s-dive[data-step="1"] { background-color: #ff6fae; }
+.s-dive[data-step="2"] { background-color: #ffc400; }
+.dive-text {
+  padding: 1.6rem 1.8rem 1.4rem;
+  border-radius: 34px;
+  background: linear-gradient(145deg, rgba(61, 44, 94, 0.3), rgba(61, 44, 94, 0.14));
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--glass-shadow);
+  transition: background 0.6s;
+}
+.s-dive[data-step="2"] .dive-text { background: linear-gradient(145deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.28)); }
+.dive-steps { min-height: 14rem; }
+.orb { border-color: rgba(255, 255, 255, 0.65); box-shadow: 0 24px 60px rgba(61, 44, 94, 0.3), inset 0 0 0 2px rgba(255, 255, 255, 0.4); }
+
+.pin-label { padding: 0.7rem 1rem; border-radius: 22px; background: var(--glass); border: 1.5px solid var(--glass-edge); box-shadow: var(--glass-shadow); top: -48px; }
+.pin.left .pin-label { right: 40px; }
+.pin.right .pin-label { left: 40px; }
+.pin b { border: 2px solid rgba(255, 255, 255, 0.85); background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent 55%); box-shadow: 0 10px 22px rgba(61, 44, 94, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+.float-photo img { border-color: rgba(255, 255, 255, 0.8); box-shadow: 0 18px 40px rgba(61, 44, 94, 0.25); }
+
+.s-kits {
+  background-color: #fff1c2;
+  background-image: radial-gradient(circle at 10% 20%, rgba(255, 95, 162, 0.35), transparent 35%), radial-gradient(circle at 60% 90%, rgba(76, 201, 240, 0.4), transparent 38%), radial-gradient(circle at 92% 25%, rgba(155, 93, 229, 0.3), transparent 38%);
+}
+.kit.card { background: linear-gradient(145deg, color-mix(in srgb, var(--tint) 22%, rgba(255, 255, 255, 0.6)), rgba(255, 255, 255, 0.32)); }
+.kit.card .price { background: rgba(255, 217, 61, 0.85); border: 1px solid rgba(255, 255, 255, 0.8); }
+
+.s-finale { background: radial-gradient(circle at 15% 20%, rgba(76, 201, 240, 0.5), transparent 40%), radial-gradient(circle at 85% 80%, rgba(255, 217, 61, 0.4), transparent 40%), linear-gradient(160deg, var(--purple), #c04fd8 60%, var(--pink)); }
+.fbub { border: 1.5px solid rgba(255, 255, 255, 0.6); }
+
+/* Glassy 3D blocks: see-through so you can spot the other faces */
+.cube .face { background: linear-gradient(145deg, rgba(255, 255, 255, 0.4), transparent 60%), color-mix(in srgb, var(--c) 78%, transparent); border: 2px solid rgba(255, 255, 255, 0.75); box-shadow: inset 0 0 14px rgba(255, 255, 255, 0.35); }
+
+/* ---------- Browsers without backdrop-filter get calmer, more solid glass ---------- */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .card, .booking-calendar, .pin-label, .kit.card { background: rgba(255, 255, 255, 0.9); }
+  header { background: rgba(155, 93, 229, 0.95); }
+  dialog.book-dialog .dialog-inner { background: rgba(255, 252, 247, 0.98); }
+  .dive-text { background: rgba(61, 44, 94, 0.45); }
+}
+
+/* ---------- Mateology Play Society logo ---------- */
+header h1 { margin: 0; line-height: 0; }
+.brand {
+  display: inline-block;
+  padding: 0.22rem 1rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 248, 238, 0.78));
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 6px 18px rgba(61, 44, 94, 0.2), inset 0 1px 0 #fff;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.brand:hover { transform: scale(1.05) rotate(-1.5deg); }
+.brand img { display: block; height: 42px; width: auto; }
+.brand-foot { margin: 0 auto 0.8rem; padding: 0.5rem 1.6rem; border-radius: 28px; }
+.brand-foot img { height: 78px; }
+footer { text-align: center; }
+.finale-logo {
+  display: inline-block; margin-bottom: 1.6rem; padding: 0.9rem 2rem; border-radius: 34px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.88), rgba(255, 248, 238, 0.7));
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 50px rgba(61, 44, 94, 0.3), inset 0 1px 0 #fff;
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+}
+.finale-logo img { display: block; width: min(64vw, 380px); height: auto; }
+@media (max-width: 600px) {
+  header h1 { margin-right: 0; }
+  .brand img { height: 36px; }
+  .brand-foot img { height: 64px; }
+}
+
+/* logo size and footer badge tweaks */
+.brand img { height: 54px; }
+.brand { padding: 0.2rem 1.1rem; }
+.brand-foot, .finale-logo { background: rgba(255, 249, 240, 0.97); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.brand-foot img { height: 84px; }
+.s-hero { margin-top: -86px; }
+@media (max-width: 600px) {
+  .brand img { height: 42px; }
+  .brand-foot img { height: 68px; }
+  .s-hero { margin-top: -120px; }
+}
